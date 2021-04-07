@@ -4,6 +4,14 @@ This application is a demonstration prototype just to show how to perform SQLi a
 
 ## Install
 
+- Setup postgresql database
+
+```
+sudo -u postgres createuser -P me
+sudo -u postgres createdb -O me data
+export PGPASSWORD=******
+```
+
 - Install
 
 ```
@@ -24,9 +32,6 @@ Open http://localhost:8000/?user=me
 
 Find sql injection to see all task (not only for one user).
 
-This prototype is still in progress.
-Open ``views.py`` to set ``user`` and add SQL injection
-
 
 ## Fix
 
@@ -38,7 +43,7 @@ Solution:
 git checkout fix
 ```
 
-The solution is to use prepare statement:
+The solution is to use prepared statement:
 
 ```
 query = "SELECT * from sqli_task WHERE owner = %s"
