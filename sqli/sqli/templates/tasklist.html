@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task List</title>
+</head>
+<body>
+<h1>Task List</h1>
+<div>
+<table>
+<tr>
+  <th>Description</th>
+  <th>Owner</th>
+</tr>
+{% for task in tasks %}
+  <tr>
+    <td>{{ task.1 }}</td>
+    <td>{{ task.2 }}</td>
+  </tr>
+{% endfor %}
+</table>
+</div>
+<a href="task/new">Add task</a>
+</body>
+</html>
