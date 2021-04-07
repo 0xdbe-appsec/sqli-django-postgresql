@@ -4,21 +4,40 @@ This application is a demonstration prototype just to show how to perform SQLi a
 
 ## Install
 
+- Setup postgresql database
+
+```
+sudo -u postgres createuser -P me
+sudo -u postgres createdb -O me data
+export PGPASSWORD=******
+```
+
+- Install
+
+```
+pipenv install
+```
+
+- run
+
+```
+pipenv shell
+cd sqli
+python manage.py runserver
+```
+
 ## Hack
 
 Open http://localhost:8000/?user=me
 
-Find sql injection to see all task (not only for one user).
-
-This prototype is still in progress.
-Open ``views.py`` to set ``user`` and add SQL injection
+Find SQL injection to see all tasks (not only for one user).
 
 
 ## Fix
 
-Create a new branch and try to fix this sql injection.
+Create a new branch and try to fix this SQL Injection.
 
-Solution:
+To see solution:
 
 ```
 git checkout fix
