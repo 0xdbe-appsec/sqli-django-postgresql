@@ -4,6 +4,20 @@ This application is a demonstration prototype just to show how to perform SQLi a
 
 ## Install
 
+- Install
+
+```
+pipenv install
+```
+
+- run
+
+```
+pipenv shell
+cd sqli
+python manage.py runserver
+```
+
 ## Hack
 
 Open http://localhost:8000/?user=me
@@ -22,4 +36,12 @@ Solution:
 
 ```
 git checkout fix
+```
+
+The solution is to use prepare statement:
+
+```
+query = "SELECT * from sqli_task WHERE owner = %s"
+cursor = connection.cursor()
+cursor.execute(query, [user])
 ```

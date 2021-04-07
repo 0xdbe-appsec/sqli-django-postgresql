@@ -7,9 +7,11 @@ from .forms import TaskForm
 
 def task_list(request):
     user = request.GET.get('user', "me")
-    query = "SELECT * from sqli_task WHERE owner ='" + user + "'"
+    # hack
+    #user = "me' OR 1=1--"
+    query = "SELECT * from sqli_task WHERE owner = %s"
     cursor = connection.cursor()
-    cursor.execute(query)
+    cursor.execute(query, [user])
     tasks = cursor.fetchall()
     data = {
         'tasks': tasks
